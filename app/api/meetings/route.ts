@@ -1,0 +1,1 @@
+import{NextResponse}from"next/server";import{meetingSchema}from"@/lib/validation";export async function POST(r:Request){try{const x=meetingSchema.parse(await r.json());return NextResponse.json({meeting:{...x,id:"meeting-"+Date.now(),status:"scheduled",calendar:"local"}})}catch{return NextResponse.json({error:"Invalid meeting"},{status:400})}}
