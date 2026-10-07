@@ -1,0 +1,1 @@
+import{NextResponse}from"next/server";import{z}from"zod";import{analyzeDemoCustomer}from"@/lib/calling";const s=z.object({text:z.string().min(1)});export async function POST(r:Request){try{return NextResponse.json(analyzeDemoCustomer(s.parse(await r.json()).text))}catch{return NextResponse.json({error:"Invalid input"},{status:400})}}
